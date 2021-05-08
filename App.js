@@ -7,23 +7,39 @@ import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "./screens/HomeScreen";
 import DetailsScreen from "./screens/DetailsScreen";
 import FormScreen from "./screens/FormScreen";
+import LoginScreen from "./screens/LoginScreen";
 
 export default function App() {
 	const Stack = createStackNavigator();
+	const user = "1";
 
 	return (
 		<SafeAreaView style={styles.container}>
-			<NavigationContainer>
-				<Stack.Navigator>
-					<Stack.Screen
-						name="Home"
-						component={HomeScreen}
-						options={{ title: "Overview" }}
-					/>
-					<Stack.Screen name="Details" component={DetailsScreen} />
-					<Stack.Screen name="Form" component={FormScreen} />
-				</Stack.Navigator>
-			</NavigationContainer>
+			{user ? (
+				<NavigationContainer>
+					<Stack.Navigator>
+						<Stack.Screen
+							name="Home"
+							component={HomeScreen}
+							options={{ title: "Overview" }}
+						/>
+						<Stack.Screen name="Details" component={DetailsScreen} />
+						<Stack.Screen name="Form" component={FormScreen} />
+					</Stack.Navigator>
+				</NavigationContainer>
+			) : (
+				<NavigationContainer>
+					<Stack.Navigator>
+						<Stack.Screen
+							name="Login"
+							component={LoginScreen}
+							options={{ title: "Overview" }}
+						/>
+						<Stack.Screen name="Details" component={DetailsScreen} />
+						<Stack.Screen name="Form" component={FormScreen} />
+					</Stack.Navigator>
+				</NavigationContainer>
+			)}
 
 			<StatusBar style="auto" />
 		</SafeAreaView>
