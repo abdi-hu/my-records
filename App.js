@@ -1,7 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { StyleSheet, Text, SafeAreaView } from "react-native";
-import { Button } from "react-native-elements";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "./screens/HomeScreen";
@@ -21,7 +20,7 @@ export default function App() {
 						<Stack.Screen
 							name="Home"
 							component={HomeScreen}
-							options={{ title: "Overview" }}
+							options={{ title: "Doctors" }}
 						/>
 						<Stack.Screen name="Details" component={DetailsScreen} />
 						<Stack.Screen name="Form" component={FormScreen} />
@@ -49,6 +48,5 @@ export default function App() {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: "powderblue",
 	},
 });

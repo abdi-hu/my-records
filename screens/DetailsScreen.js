@@ -1,7 +1,8 @@
 import React from "react";
-import { Text, View, Image } from "react-native";
+import { Text, View } from "react-native";
+import { Card, ListItem } from "react-native-elements";
 
-function DetailsScreen({ route, navigation }) {
+function DetailsScreen({ route }) {
 	const {
 		id,
 		name,
@@ -15,26 +16,38 @@ function DetailsScreen({ route, navigation }) {
 		visits,
 	} = route.params;
 	const doctorVisits = visits.filter((visit) => visit.id == id);
-	console.log(doctorVisits);
+
 	return (
 		<View style={{ height: "100%" }}>
-			<View style={{ height: "25%" }}>
-				<Image
-					source={{ uri: image }}
-					style={{ width: "100%", height: "100%" }}
-				/>
-			</View>
-			<Text>Details Screen</Text>
-			<Text>{id}</Text>
-			<Text>{name}</Text>
-			<Text>{specialty}</Text>
-			<Text>{address}</Text>
-			{doctorVisits.map((visit, id) => (
-				<View>
-					<Text key={id}>{visit.appoint_date}</Text>
-					<Text>{visit.visit_summary}</Text>
+			<Card>
+				<Card.Image
+					source={{
+						uri: image,
+					}}
+					resizeMode="center"
+				></Card.Image>
+				<Card.Divider />
+				<Card.Title>{name}</Card.Title>
+				<Card.Divider />
+				<Card.FeaturedTitle>Featured Title</Card.FeaturedTitle>
+				<View style={{ justifyContent: "center", alignItems: "center" }}>
+					<Text>{specialty}</Text>
+					<Text>{phone}</Text>
+					<Text>{email}</Text>
+					<Text>{availability}</Text>
+					<Text>Next Appointment:{next_appoint}</Text>
+					<Text>{address}</Text>
 				</View>
-			))}
+			</Card>
+
+			<ListItem>
+				{doctorVisits.map((visit, id) => (
+					<View key={id}>
+						<ListItem.Title>{visit.appoint_date}</ListItem.Title>
+						<ListItem.Subtitle>{visit.visit_summary}</ListItem.Subtitle>
+					</View>
+				))}
+			</ListItem>
 		</View>
 	);
 }
