@@ -15,7 +15,8 @@ function DetailsScreen({ route }) {
 		image,
 		visits,
 	} = route.params;
-	const doctorVisits = visits.filter((visit) => visit.id == id);
+
+	const doctorVisits = visits.filter((visit) => visit.doctor_id == id);
 
 	return (
 		<View style={{ height: "100%" }}>
@@ -40,14 +41,12 @@ function DetailsScreen({ route }) {
 				</View>
 			</Card>
 
-			<ListItem>
-				{doctorVisits.map((visit, id) => (
-					<View key={id}>
-						<ListItem.Title>{visit.appoint_date}</ListItem.Title>
-						<ListItem.Subtitle>{visit.visit_summary}</ListItem.Subtitle>
-					</View>
-				))}
-			</ListItem>
+			{doctorVisits.map((visit, id) => (
+				<ListItem key={id}>
+					<ListItem.Title>{visit.appoint_date}</ListItem.Title>
+					<ListItem.Subtitle>{visit.visit_summary}</ListItem.Subtitle>
+				</ListItem>
+			))}
 		</View>
 	);
 }

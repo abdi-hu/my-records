@@ -1,8 +1,9 @@
 {
   "expo": {
-    "name": "my-records",
-    "slug": "my-records",
+    "name": "My-Doctors",
+    "slug": "My-Doctors",
     "version": "1.0.0",
+    "owner": "abdi-hu",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -27,6 +28,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": ""
   }
 }

@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000/";
+const BASE_URL = "https://my-doctors-api.herokuapp.com/";
 
 function fetchDoctors() {
 	return fetch(`${BASE_URL}doctors`).then((res) => res.json());
@@ -15,4 +15,13 @@ function createDoctor(data) {
 		body: JSON.stringify(data),
 	}).then((res) => res.json());
 }
-export { fetchDoctors, fetchVisits, createDoctor };
+function createVisit(data) {
+	return fetch(`${BASE_URL}visits`, {
+		method: "POST",
+		headers: {
+			"Content-type": "Application/json",
+		},
+		body: JSON.stringify(data),
+	}).then((res) => res.json());
+}
+export { fetchDoctors, fetchVisits, createDoctor, createVisit };
